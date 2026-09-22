@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Katalog Edukacyjnych Stron i Aplikacji dla Dzieci i Młodzieży</title>
+  <meta name="description" content="Otwarta baza darmowych serwisów, aplikacji i bibliotek cyfrowych dla dzieci, młodzieży, rodziców oraz nauczycieli.">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Katalog Narzędzi Edukacyjnych">
+  <meta property="og:description" content="Darmowe narzędzia, aplikacje i biblioteki edukacyjne dla dzieci i młodzieży.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon Emoji -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --card-border: #334155;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #0284c7;
+      --tag-bg: #0f172a;
+      --lang-badge-bg: rgba(16, 185, 129, 0.15);
+      --lang-badge-color: #34d399;
+      --lang-badge-border: #059669;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.5;
+      padding: 2.5rem 1rem;
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    header h1 {
+      font-size: 2.3rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-main);
+      letter-spacing: -0.02em;
+    }
+
+    header p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      background: var(--card-bg);
+      padding: 1.2rem;
+      border-radius: 12px;
+      border: 1px solid var(--card-border);
+    }
+
+    .search-box {
+      flex: 2 1 260px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--card-border);
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.15s ease;
+    }
+
+    .search-box input:focus, select:focus {
+      border-color: var(--accent);
+    }
+
+    .filter-group {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      flex: 3 1 420px;
+    }
+
+    select {
+      flex: 1 1 140px;
+      padding: 0.75rem 0.9rem;
+      border-radius: 8px;
+      border: 1px solid var(--card-border);
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-size: 0.9rem;
+      cursor: pointer;
+      outline: none;
+      transition: border-color 0.15s ease;
+    }
+
+    .btn-reset {
+      background: transparent;
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      padding: 0.75rem 1.1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .btn-reset:hover {
+      background: var(--card-border);
+      color: var(--text-main);
+    }
+
+    .counter-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      padding: 0 0.25rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.35rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    .card-tags {
+      display: flex;
+      gap: 0.4rem;
+      margin-bottom: 0.85rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 5px;
+      background: var(--tag-bg);
+      color: var(--accent);
+      border: 1px solid var(--card-border);
+      font-weight: 500;
+    }
+
+    .tag-lang {
+      background: var(--lang-badge-bg);
+      color: var(--lang-badge-color);
+      border-color: var(--lang-badge-border);
+      font-weight: 600;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .card-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 1.35rem;
+      flex-grow: 1;
+    }
+
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      text-decoration: none;
+      color: #0f172a;
+      background-color: var(--accent);
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.65rem 1rem;
+      border-radius: 8px;
+      text-align: center;
+      transition: background-color 0.15s ease;
+    }
+
+    .card-link:hover {
+      background-color: var(--accent-hover);
+      color: #ffffff;
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 4rem 1rem;
+      color: var(--text-muted);
+    }
+
+    .empty-state p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    .empty-state button {
+      padding: 0.6rem 1.2rem;
+      background: var(--accent);
+      color: #0f172a;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Katalog Narzędzi Edukacyjnych</h1>
+      <p>Baza darmowych stron, aplikacji i bibliotek cyfrowych dla dzieci, młodzieży, rodziców oraz edukatorów</p>
+    </header>
+
+    <div class="controls">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Szukaj po nazwie, temacie lub słowie kluczowym..." aria-label="Pole wyszukiwania">
+      </div>
+      <div class="filter-group">
+        <select id="ageFilter" aria-label="Filtruj wg wieku">
+          <option value="">Wszystkie grupy wiekowe</option>
+          <option value="3-7">3–7 lat (Wczesnoszkolny / Przedszkole)</option>
+          <option value="8-12">8–12 lat (Szkoła podstawowa)</option>
+          <option value="12+">12+ lat (Młodzież i liceum)</option>
+          <option value="Nauczyciele">Nauczyciele i rodzice</option>
+        </select>
+        <select id="catFilter" aria-label="Filtruj wg kategorii">
+          <option value="">Wszystkie przedmioty</option>
+          <option value="Programowanie">Programowanie i technologie</option>
+          <option value="Przyroda">Nauki ścisłe i przyroda</option>
+          <option value="Matematyka">Matematyka</option>
+          <option value="Czytanie">Książki, czytanie i biblioteki</option>
+          <option value="Języki">Języki obce i polski</option>
+          <option value="Sztuka">Sztuka, muzyka i szachy</option>
+          <option value="Ogólne">Gry logiczne i wiedza ogólna</option>
+          <option value="Materiały">Materiały dla edukatorów</option>
+        </select>
+        <select id="langFilter" aria-label="Filtruj wg języka">
+          <option value="">Wszystkie języki</option>
+          <option value="PL">Język polski [PL]</option>
+          <option value="EN">Język angielski [EN]</option>
+          <option value="PL/EN">Polski i angielski [PL/EN]</option>
+          <option value="DE">Język niemiecki [DE]</option>
+          <option value="FR">Język francuski [FR]</option>
+          <option value="UA">Język ukraiński [UA]</option>
+          <option value="Wielojęzyczny">Wielojęzyczne</option>
+        </select>
+        <button class="btn-reset" id="resetBtn" title="Resetuj filtry">Wyczyść</button>
+      </div>
+    </div>
+
+    <div class="counter-bar">
+      <div id="itemCount">Ładowanie bazy danych...</div>
+    </div>
+
+    <div class="grid" id="itemsGrid"></div>
+  </div>
+
+  <script>
+    const resources = [
+      // 3-7 lat
+      { name: "Starfall", age: "3-7", cat: "Czytanie", lang: "EN", desc: "Nauka czytania, liter i fonetyki w języku angielskim poprzez interaktywne gry.", url: "https://www.starfall.com" },
+      { name: "PBS KIDS", age: "3-7", cat: "Ogólne", lang: "EN", desc: "Edukacyjne gry oraz bajki wspierające rozwój społeczny i poznawczy dziecka.", url: "https://pbskids.org" },
+      { name: "Sesame Street", age: "3-7", cat: "Ogólne", lang: "EN", desc: "Oficjalny serwis z materiałami edukacyjnymi, grami i postaciami z Ulicy Sezamkowej.", url: "https://www.sesamestreet.org" },
+      { name: "Die Maus (WDR)", age: "3-7", cat: "Ogólne", lang: "DE", desc: "Niemiecki kultowy portal dla dzieci z grami, filmikami wyjaśniającymi i łamigłówkami.", url: "https://www.wdrmaus.de" },
+      { name: "Kazkowyj Swit", age: "3-7", cat: "Czytanie", lang: "UA", desc: "Baza ukraińskich bajek ludowych i autorskich z nagraniami audio do słuchania.", url: "https://kazky.org.ua" },
+      { name: "Storyline Online", age: "3-7", cat: "Czytanie", lang: "EN", desc: "Wideo-audiobooki czytane przez znanych aktorów wraz z animowanymi ilustracjami.", url: "https://storylineonline.net" },
+      { name: "Unite for Literacy", age: "3-7", cat: "Czytanie", lang: "Wielojęzyczny", desc: "Krótkie książki obrazkowe z narracją audio w kilkudziesięciu językach.", url: "https://www.unite4literacy.com" },
+      { name: "Reading Bear", age: "3-7", cat: "Czytanie", lang: "EN", desc: "Darmowy kurs podstaw fonetyki, nauki czytania i prawidłowej wymowy słów.", url: "https://www.readingbear.org" },
+      { name: "Free Kids Books", age: "3-7", cat: "Czytanie", lang: "EN", desc: "Darmowe książki edukacyjne i bajki dla dzieci dostępne do pobrania w PDF.", url: "https://freekidsbooks.org" },
+      { name: "Oxford Owl", age: "3-7", cat: "Czytanie", lang: "EN", desc: "Darmowy dostęp do e-booków według poziomów czytania z wydawnictwa Oxford.", url: "https://www.oxfordowl.co.uk" },
+      { name: "Gus on the Go", age: "3-7", cat: "Języki", lang: "Wielojęzyczny", desc: "Aplikacje ułatwiające najmłodszym naukę podstawowych słów w wielu językach obcych.", url: "https://www.gus-on-the-go.com" },
+      { name: "Polskie Radio Dzieciom", age: "3-7", cat: "Czytanie", lang: "PL", desc: "Polskie audycje, bajki na dobranoc i edukacyjne słuchowiska bez reklam.", url: "https://www.polskieradio.pl/dzieci" },
+      { name: "Wolne Lektury (Dla Dzieci)", age: "3-7", cat: "Czytanie", lang: "PL", desc: "Wiersze, baśnie i bajki z domeny publicznej w formacie tekstowym oraz audio.", url: "https://wolnelektury.pl" },
+      { name: "ABCya", age: "3-7", cat: "Ogólne", lang: "EN", desc: "Gry edukacyjne wspierające naukę liter, cyfr, orientacji i logicznego myślenia.", url: "https://www.abcya.com" },
+      { name: "Ciufcia.pl", age: "3-7", cat: "Ogólne", lang: "PL", desc: "Klasyczne polskie mini-gry edukacyjne i zabawy logiczne dla przedszkolaków.", url: "https://ciufcia.pl" },
+      { name: "Lulek.tv", age: "3-7", cat: "Ogólne", lang: "PL", desc: "Edukacyjne piosenki, zabawy multimedialne i nauka liczenia w języku polskim.", url: "https://lulek.tv" },
+      { name: "Pisupisu.pl", age: "3-7", cat: "Języki", lang: "PL", desc: "Zabawy z polską ortografią, nauką pisania na klawiaturze i znajomością liter.", url: "https://pisupisu.pl" },
+      { name: "ZdobywcyWiedzy.pl", age: "3-7", cat: "Ogólne", lang: "PL", desc: "Quizy i zadania dopasowane do polskiej podstawy programowej wczesnoszkolnej.", url: "https://zdobywcywiedzy.pl" },
+
+      // 8-12 lat
+      { name: "Scratch", age: "8-12", cat: "Programowanie", lang: "PL/EN", desc: "Standard programowania blokowego od MIT. Tworzenie gier, symulacji i animacji.", url: "https://scratch.mit.edu" },
+      { name: "Code.org", age: "8-12", cat: "Programowanie", lang: "PL/EN", desc: "Interaktywne kursy programowania z polskim tłumaczeniem i certyfikatami.", url: "https://code.org" },
+      { name: "Blockly Games", age: "8-12", cat: "Programowanie", lang: "PL/EN", desc: "Gry od Google wprowadzające w myślenie algorytmiczne za pomocą bloczków kodu.", url: "https://blockly.games" },
+      { name: "Microsoft MakeCode", age: "8-12", cat: "Programowanie", lang: "PL/EN", desc: "Programowanie mikrokontrolerów (np. micro:bit) oraz tworzenie gier retro Arcade.", url: "https://makecode.microsoft.com" },
+      { name: "Hour of Code", age: "8-12", cat: "Programowanie", lang: "PL/EN", desc: "Krótkie samouczki kodowania osadzone m.in. w uniwersach Minecraft czy Star Wars.", url: "https://hourofcode.com" },
+      { name: "TypingClub", age: "8-12", cat: "Programowanie", lang: "PL/EN", desc: "Interaktywny samouczek bezwzrokowego pisania na klawiaturze wszystkimi palcami.", url: "https://www.typingclub.com" },
+      { name: "InstaKod", age: "8-12", cat: "Programowanie", lang: "PL", desc: "Polska platforma do nauki algorytmiki z zadaniami dla szkół podstawowych.", url: "https://instakod.pl" },
+      { name: "Mistrzowie Kodowania", age: "8-12", cat: "Programowanie", lang: "PL", desc: "Otwarte scenariusze lekcji i samouczki programowania w Scratchu po polsku.", url: "https://mistrzowiekodowania.pl" },
+      { name: "ARTE Junior", age: "8-12", cat: "Przyroda", lang: "FR/DE", desc: "Europejskie reportaże i magazyny naukowe dla dzieci tłumaczące zagadnienia świata.", url: "https://www.arte.tv/pl/arte-junior/" },
+      { name: "National Geographic Kids", age: "8-12", cat: "Przyroda", lang: "EN", desc: "Artykuły, ciekawostki, quizy i materiały wideo o zwierzętach oraz geografii.", url: "https://kids.nationalgeographic.com" },
+      { name: "NASA Space Place", age: "8-12", cat: "Przyroda", lang: "EN", desc: "Kosmiczny portal NASA dla dzieci: Układ Słoneczny, sondy i misje astronomiczne.", url: "https://spaceplace.nasa.gov" },
+      { name: "NASA Climate Kids", age: "8-12", cat: "Przyroda", lang: "EN", desc: "Zrozumiałe wyjaśnienia meteorologii, zjawisk cieplarnianych i oceanografii.", url: "https://climatekids.nasa.gov" },
+      { name: "ESA Kids", age: "8-12", cat: "Przyroda", lang: "PL/EN", desc: "Serwis Europejskiej Agencji Kosmicznej: eksperymenty, mapy i animacje (częściowo PL).", url: "https://www.esa.int/kids" },
+      { name: "Science Buddies", age: "8-12", cat: "Przyroda", lang: "EN", desc: "Katalog projektów naukowych i bezpiecznych eksperymentów do wykonania w domu.", url: "https://www.sciencebuddies.org" },
+      { name: "Mystery Science", age: "8-12", cat: "Przyroda", lang: "EN", desc: "Plany lekcji wyjaśniające zjawiska przyrodnicze przez odpowiedzi na ciekawe pytania.", url: "https://mysteryscience.com" },
+      { name: "Exploratorium", age: "8-12", cat: "Przyroda", lang: "EN", desc: "Materiały interaktywnego muzeum z San Francisco: optyka, fizyka i zjawiska naturalne.", url: "https://www.exploratorium.edu" },
+      { name: "Nauka. To Lubię Junior", age: "8-12", cat: "Przyroda", lang: "PL", desc: "Filmy i artykuły dra Tomasza Rożka odpowiadające na pytania o naturę i naukę.", url: "https://naukatolubie.pl" },
+      { name: "Centrum Nauki Kopernik", age: "8-12", cat: "Przyroda", lang: "PL", desc: "Zbiór doświadczeń domowych i eksperymentów stworzonych przez zespół CNK.", url: "https://www.kopernik.org.pl" },
+      { name: "Math Playground", age: "8-12", cat: "Matematyka", lang: "EN", desc: "Gry matematyczne rozwijające myślenie o ułamkach, geometrii i podstawach algebry.", url: "https://www.mathplayground.com" },
+      { name: "Matzoo.pl", age: "8-12", cat: "Matematyka", lang: "PL", desc: "Tysiące zadań z matematyki ułożonych ściśle pod program polskiej szkoły podstawowej.", url: "https://matzoo.pl" },
+      { name: "Szalone Liczby", age: "8-12", cat: "Matematyka", lang: "PL", desc: "Sprawdziany, wzory i zestawy przygotowujące m.in. do egzaminu ósmoklasisty.", url: "https://szaloneliczby.pl" },
+      { name: "Khan Academy (PL)", age: "8-12", cat: "Matematyka", lang: "PL", desc: "Darmowe wideolekcje i ćwiczenia z matematyki oraz fizyki w języku polskim.", url: "https://pl.khanacademy.org" },
+      { name: "Britannica Kids", age: "8-12", cat: "Ogólne", lang: "EN", desc: "Zweryfikowane artykuły encyklopedyczne przygotowane z myślą o uczniach.", url: "https://kids.britannica.com" },
+      { name: "Zintegrowana Platforma Edukacyjna (MEN)", age: "8-12", cat: "Ogólne", lang: "PL", desc: "Oficjalne, bezpłatne polskie e-podręczniki i materiały multimedialne MEN.", url: "https://zpe.gov.pl" },
+      { name: "Dyktanda.pl", age: "8-12", cat: "Języki", lang: "PL", desc: "Ćwiczenia ortograficzne, reguły pisowni i dyktanda online na każdym poziomie.", url: "https://www.dyktanda.pl" },
+      { name: "Ninateka Edukacja", age: "8-12", cat: "Sztuka", lang: "PL", desc: "Darmowe polskie filmy, animacje, spektakle i dokumenty edukacyjne.", url: "https://ninateka.pl" },
+      { name: "Polona", age: "8-12", cat: "Czytanie", lang: "PL", desc: "Biblioteka Narodowa online: zdigitalizowane starodruki, mapy, ryciny i baśnie.", url: "https://polona.pl" },
+      { name: "Federacja Bibliotek Cyfrowych", age: "8-12", cat: "Czytanie", lang: "PL", desc: "Wyszukiwarka polskich zdigitalizowanych zasobów naukowych i muzealnych.", url: "https://fbc.pionier.net.pl" },
+      { name: "Chrome Music Lab", age: "8-12", cat: "Sztuka", lang: "EN", desc: "Wizualne eksperymenty z falami dźwiękowymi, rytmem i syntezą audio w przeglądarce.", url: "https://musiclab.chromeexperiments.com" },
+      { name: "Art for Kids Hub", age: "8-12", cat: "Sztuka", lang: "EN", desc: "Praktyczne lekcje rysowania krok po kroku dla młodszych i starszych dzieci.", url: "https://www.artforkidshub.com" },
+      { name: "Muzykoteka Szkolna", age: "8-12", cat: "Sztuka", lang: "PL", desc: "Wiedza o instrumentach, stylach muzycznych i kompozytorach w przystępnej formie.", url: "https://muzykotekaszkolna.pl" },
+      { name: "ChessKid", age: "8-12", cat: "Sztuka", lang: "PL/EN", desc: "Bezpieczny portal szachowy z zadaniami taktycznymi i nauką gry od podstaw.", url: "https://www.chesskid.com" },
+
+      // 12+ lat
+      { name: "GeoGebra", age: "12+", cat: "Matematyka", lang: "PL/EN", desc: "Interaktywne środowisko do nauki geometrii, algebry, wykresów i rachunku różniczkowego.", url: "https://www.geogebra.org" },
+      { name: "CodeCombat", age: "12+", cat: "Programowanie", lang: "PL/EN", desc: "Nauka pisania realnego kodu w Pythonie i JavaScript poprzez grę RPG.", url: "https://codecombat.com" },
+      { name: "Olimpijskie Koło Informatyczne (OKI)", age: "12+", cat: "Programowanie", lang: "PL", desc: "Darmowe kursy algorytmiki i przygotowanie do olimpiad w C++ oraz Pythonie.", url: "https://oki.org.pl" },
+      { name: "PhET Interactive Simulations", age: "12+", cat: "Przyroda", lang: "PL/EN", desc: "Uniwersyteckie, interaktywne symulacje zjawisk fizycznych, chemicznych i biologicznych.", url: "https://phet.colorado.edu/pl" },
+      { name: "RCIN", age: "12+", cat: "Przyroda", lang: "PL", desc: "Repozytorium Cyfrowe Instytutów Naukowych: publikacje, atlasy i zbiory PAN.", url: "https://rcin.org.pl" },
+      { name: "NRICH Maths", age: "12+", cat: "Matematyka", lang: "EN", desc: "Zaawansowane wyzwania i zadania logiczne tworzone przez Uniwersytet w Cambridge.", url: "https://nrich.maths.org" },
+      { name: "Matemaks", age: "12+", cat: "Matematyka", lang: "PL", desc: "Praktyczne omówienie programu szkoły średniej, teoria i arkusze maturalne.", url: "https://www.matemaks.pl" },
+      { name: "Tomasz Gwiazda (YouTube)", age: "12+", cat: "Matematyka", lang: "PL", desc: "Czytelne wideolekcje tłumaczące krok po kroku materiał szkolny z matematyki.", url: "https://www.youtube.com/@TomaszGwiazda" },
+      { name: "Internet Archive (archive.org)", age: "12+", cat: "Czytanie", lang: "Wielojęzyczny", desc: "Globalna biblioteka cyfrowa: miliony bezpłatnych książek, starych gier i nagrań.", url: "https://archive.org" },
+      { name: "Duolingo", age: "12+", cat: "Języki", lang: "PL/EN", desc: "Grywalizacyjna nauka języków obcych (także z polskiego) w aplikacji i na WWW.", url: "https://duolingo.com" },
+      { name: "Insta.Ling", age: "12+", cat: "Języki", lang: "PL", desc: "System do systematycznej nauki i powtórek słówek z języków obcych w szkołach.", url: "https://instaling.pl" },
+      { name: "musictheory.net", age: "12+", cat: "Sztuka", lang: "EN", desc: "Lekcje zapisu nutowego, akordów i harmonii wraz z ćwiczeniami kształcenia słuchu.", url: "https://www.musictheory.net" },
+      { name: "Lichess", age: "12+", cat: "Sztuka", lang: "PL/EN", desc: "W 100% darmowa platforma szachowa open-source bez reklam, z analizą partii.", url: "https://lichess.org" },
+
+      // Edukatorzy / Rodzice
+      { name: "LEGO Education", age: "Nauczyciele", cat: "Materiały", lang: "PL/EN", desc: "Gotowe scenariusze lekcji i projekty z obszaru STEAM do pracy w klasie i w domu.", url: "https://education.lego.com" },
+      { name: "Common Sense Media", age: "Nauczyciele", cat: "Materiały", lang: "EN", desc: "Niezależne recenzje gier, filmów, książek i aplikacji pod kątem wieku i bezpieczeństwa.", url: "https://www.commonsensemedia.org" },
+      { name: "Edukacja Medialna", age: "Nauczyciele", cat: "Materiały", lang: "PL", desc: "Materiały o higienie cyfrowej, weryfikacji informacji i prawie autorskim.", url: "https://edukacjamedialna.edu.pl" },
+      { name: "SaferInternet.pl", age: "Nauczyciele", cat: "Materiały", lang: "PL", desc: "Oficjalne poradniki i pakiety edukacyjne o cyberbezpieczeństwie dzieci.", url: "https://saferinternet.pl" }
+    ];
+
+    const searchInput = document.getElementById('searchInput');
+    const ageFilter = document.getElementById('ageFilter');
+    const catFilter = document.getElementById('catFilter');
+    const langFilter = document.getElementById('langFilter');
+    const resetBtn = document.getElementById('resetBtn');
+    const itemsGrid = document.getElementById('itemsGrid');
+    const itemCount = document.getElementById('itemCount');
+
+    function resetFilters() {
+      searchInput.value = '';
+      ageFilter.value = '';
+      catFilter.value = '';
+      langFilter.value = '';
+      render();
+    }
+
+    function render() {
+      const query = searchInput.value.toLowerCase().trim();
+      const age = ageFilter.value;
+      const cat = catFilter.value;
+      const lang = langFilter.value;
+
+      const filtered = resources.filter(item => {
+        const matchesQuery = item.name.toLowerCase().includes(query) || 
+                             item.desc.toLowerCase().includes(query) ||
+                             item.cat.toLowerCase().includes(query) ||
+                             item.lang.toLowerCase().includes(query);
+        
+        const matchesAge = !age || item.age === age;
+        const matchesCat = !cat || item.cat === cat;
+        
+        const matchesLang = !lang || 
+                            item.lang === lang || 
+                            (lang === 'PL' && item.lang.includes('PL')) ||
+                            (lang === 'EN' && item.lang.includes('EN')) ||
+                            item.lang === 'Wielojęzyczny';
+
+        return matchesQuery && matchesAge && matchesCat && matchesLang;
+      });
+
+      itemCount.textContent = `Wyświetlane pozycje: ${filtered.length} z ${resources.length}`;
+
+      if (filtered.length === 0) {
+        itemsGrid.innerHTML = `
+          <div class="empty-state">
+            <p>Nie znaleziono pozycji spełniających podane kryteria.</p>
+            <button onclick="resetFilters()">Zresetuj filtry</button>
+          </div>
+        `;
+        return;
+      }
+
+      itemsGrid.innerHTML = filtered.map(item => `
+        <article class="card">
+          <div>
+            <div class="card-tags">
+              <span class="tag">${item.age === 'Nauczyciele' ? 'Dla edukatorów' : 'Wiek: ' + item.age}</span>
+              <span class="tag">${item.cat}</span>
+              <span class="tag tag-lang">[${item.lang}]</span>
+            </div>
+            <h2 class="card-title">${item.name}</h2>
+            <p class="card-desc">${item.desc}</p>
+          </div>
+          <a class="card-link" href="${item.url}" target="_blank" rel="noopener noreferrer">
+            Przejdź do strony <span>&rarr;</span>
+          </a>
+        </article>
+      `).join('');
+    }
+
+    searchInput.addEventListener('input', render);
+    ageFilter.addEventListener('change', render);
+    catFilter.addEventListener('change', render);
+    langFilter.addEventListener('change', render);
+    resetBtn.addEventListener('click', resetFilters);
+
+    render();
+  </script>
+</body>
+</html>
